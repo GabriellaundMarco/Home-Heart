@@ -135,26 +135,27 @@
         display: flex;
     }
 
+    /* Menü als Overlay über den verbleibenden Bildschirm */
     nav {
         position: fixed;
-        top: 80px; /* Anpassen an die tatsächliche Höhe deines Headers */
+        top: 80px; /* Höhe deines Headers */
         left: 0;
-        width: 100%;
-        height: calc(100dvh - 80px);
+        right: 0;
+        bottom: 0; /* Spann den Bereich exakt bis zum unteren Displayrand auf */
         background: #ffffff;
         border-bottom: 1px solid var(--border-light);
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         
-        /* Ein-/Ausblenden per CSS-Transition */
+        /* Unsichtbar im Standardzustand */
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
         transition: opacity 0.3s ease, visibility 0.3s ease;
         
-        /* Scrollen innerhalb des geöffneten Menüs aktivieren */
+        /* Wichtig für Firefox Android & Safari: Eigenes Scroll-Verhalten */
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        padding-bottom: 60px; /* Großzügiger Platzhalter für Firefox Android */
+        padding-bottom: 80px; /* Großzügiger Puffer, damit der Sprachumschalter nie verdeckt wird */
     }
 
     nav.active {
@@ -189,7 +190,7 @@
         padding-left: 0;
         padding-top: 15px;
         margin-top: 10px;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
