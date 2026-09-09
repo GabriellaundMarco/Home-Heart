@@ -126,19 +126,7 @@
             font-weight: 600;
         }
 
-      @media (max-width: 768px) {
-    .lang-switcher {
-        border-left: none;
-        border-top: 1px solid var(--border-light);
-        margin-left: 0;
-        padding-left: 0;
-        padding-top: 15px;
-        margin-top: 10px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
+   @media (max-width: 768px) {
     header {
         padding: 15px 5%;
     }
@@ -154,16 +142,20 @@
         width: 100%;
         background: #ffffff;
         border-bottom: 1px solid var(--border-light);
+        
+        /* Im geschlossenen Zustand komplett ausgeblendet */
         max-height: 0;
-        overflow-y: auto; /* Erlaubt vertikales Scrollen, falls der Bildschirm sehr klein ist */
+        overflow: hidden;
         transition: max-height 0.4s ease-in-out;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     }
 
     nav.active {
-        /* Berechnet max-height anhand der mobilen Bildschirmschirmhöhe abzüglich des Headers */
-        max-height: calc(100vh - 80px); 
-        padding-bottom: 20px; /* Zusätzlicher Puffer unten für sauberes Aussehen */
+        /* 100dvh verhindert das Abschneiden in Android Firefox */
+        max-height: calc(100dvh - 80px); 
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 40px; /* Platzhalter unten für die Sprachauswahl */
     }
 
     nav ul {
@@ -183,6 +175,19 @@
         display: block;
         padding: 12px 0;
         font-size: 1.05rem;
+    }
+
+    .lang-switcher {
+        border-left: none;
+        border-top: 1px solid var(--border-light);
+        margin-left: 0;
+        padding-left: 0;
+        padding-top: 15px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
         /* HERO SECTION */
