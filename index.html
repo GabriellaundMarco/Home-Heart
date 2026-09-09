@@ -81,7 +81,7 @@
             color: var(--accent-solid);
         }
 
-        /* Sprachumschalter Styling */
+        /* Sprachumschalter Styling (Desktop) */
         .lang-switcher {
             font-size: 0.9rem;
             font-weight: 500;
@@ -182,18 +182,7 @@
                 color: var(--text-main);
             }
 
-            .lang-switcher a {
-    color: #2b2b2b !important; /* Zwingt den Text auf Dunkelgrau */
-}
-
-.lang-switcher .active-lang {
-    color: #8b263e !important; /* Hebt die aktive Sprache in Dunkelrot hervor */
-}
-
-.lang-switcher span {
-    color: #cccccc !important; /* Macht die Trennstriche (|) sichtbar */
-}
-
+            /* Sprachumschalter Mobil (Sauber getrennt) */
             .lang-switcher {
                 border-left: none;
                 border-top: 1px solid var(--border-light);
@@ -203,14 +192,29 @@
                 display: flex !important;
                 justify-content: center;
                 align-items: center;
-                gap: 8px;
+                gap: 12px;
             }
 
             .lang-switcher a {
+                color: #2b2b2b !important;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
                 padding: 5px 8px;
                 display: inline-block;
+                text-decoration: none;
             }
-        }   /* HERO SECTION */
+
+            .lang-switcher .active-lang {
+                color: #8b263e !important;
+                font-weight: 700 !important;
+            }
+
+            .lang-switcher span {
+                color: #888888 !important;
+            }
+        }
+
+        /* HERO SECTION */
         .hero {
             position: relative;
             overflow: hidden;
@@ -423,7 +427,6 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
-
         .card {
             position: relative;
             background: #ffffff;
