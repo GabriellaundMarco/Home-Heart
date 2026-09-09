@@ -126,7 +126,7 @@
             font-weight: 600;
         }
 
-   @media (max-width: 768px) {
+@media (max-width: 768px) {
     header {
         padding: 15px 5%;
     }
@@ -136,26 +136,31 @@
     }
 
     nav {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 80px; /* Anpassen an die tatsächliche Höhe deines Headers */
         left: 0;
         width: 100%;
+        height: calc(100dvh - 80px);
         background: #ffffff;
         border-bottom: 1px solid var(--border-light);
-        
-        /* Im geschlossenen Zustand komplett ausgeblendet */
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        
+        /* Ein-/Ausblenden per CSS-Transition */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        
+        /* Scrollen innerhalb des geöffneten Menüs aktivieren */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 60px; /* Großzügiger Platzhalter für Firefox Android */
     }
 
     nav.active {
-        /* 100dvh verhindert das Abschneiden in Android Firefox */
-        max-height: calc(100dvh - 80px); 
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 40px; /* Platzhalter unten für die Sprachauswahl */
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     nav ul {
@@ -184,7 +189,7 @@
         padding-left: 0;
         padding-top: 15px;
         margin-top: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
         width: 100%;
         display: flex;
         justify-content: center;
