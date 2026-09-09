@@ -129,7 +129,10 @@
 @media (max-width: 768px) {
     header {
         padding: 15px 5%;
-        position: relative; /* Verhindert Darstellungsfehler der Ebene */
+        position: sticky;
+        top: 0;
+        z-index: 10000;
+        background: #ffffff;
     }
 
     .menu-toggle {
@@ -137,29 +140,20 @@
     }
 
     nav {
-        display: none; /* Blockiert Rendering in Firefox im geschlossenen Zustand komplett */
-        position: fixed;
-        top: 80px; /* Höhe deines Headers */
+        display: none; /* Im geschlossenen Zustand komplett ausgeblendet */
+        position: absolute;
+        top: 100%;
         left: 0;
-        width: 100vw;
-        height: calc(100vh - 80px);
-        height: calc(100dvh - 80px);
+        width: 100%;
         background-color: #ffffff;
         border-bottom: 1px solid var(--border-light);
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        z-index: 9999; /* Garantiert, dass es ÜBER dem Seiteninhalt liegt */
-        
-        /* Touch & Scroll-Handling für Mobil-Firefox */
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        z-index: 9999;
+        padding: 10px 0 25px 0;
     }
 
     nav.active {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-bottom: 60px;
+        display: block; /* Garantiert sauberes Rendering aller untereinander liegenden Elemente */
     }
 
     nav ul {
@@ -168,7 +162,9 @@
         align-items: center;
         width: 100%;
         gap: 0;
-        padding: 20px 0 10px 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
     }
 
     nav ul li {
@@ -178,18 +174,20 @@
 
     nav a {
         display: block;
-        padding: 14px 0;
-        font-size: 1.1rem;
+        padding: 12px 0;
+        font-size: 1.05rem;
+        color: var(--text-main);
     }
 
     .lang-switcher {
         border-left: none;
         border-top: 1px solid var(--border-light);
-        margin: 15px 0 30px 0;
-        padding-top: 20px;
+        margin-top: 15px;
+        padding-top: 15px;
         width: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 }
         /* HERO SECTION */
