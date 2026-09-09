@@ -81,7 +81,7 @@
             color: var(--accent-solid);
         }
 
-        /* Sprachumschalter Styling */
+        /* Sprachumschalter Styling (Desktop) */
         .lang-switcher {
             font-size: 0.9rem;
             font-weight: 500;
@@ -126,21 +126,89 @@
             font-weight: 600;
         }
 
+        /* Mobil-Menü Anpassung für Firefox, Safari & Chrome */
         @media (max-width: 768px) {
-            .lang-switcher {
-                border-left: none;
-                border-top: 1px solid var(--border-light);
-                margin-left: 0;
-                padding-left: 0;
-                padding-top: 15px;
-                margin-top: 10px;
-                width: 100%;
+            header {
+                padding: 15px 5%;
+                position: sticky;
+                top: 0;
+                z-index: 10000;
+                background: #ffffff;
+            }
+
+            .menu-toggle {
                 display: flex;
-                justify-content: center;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                border-bottom: 1px solid var(--border-light);
+                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+                z-index: 9999;
+                padding: 15px 0 25px 0;
             }
 
             nav.active {
-                max-height: 320px; 
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                gap: 0;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1.05rem;
+                color: var(--text-main);
+            }
+
+            .lang-switcher {
+                border-left: none;
+                border-top: 1px solid var(--border-light);
+                margin-top: 15px;
+                padding-top: 15px;
+                width: 80%;
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .lang-switcher a {
+                color: var(--text-main) !important;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+                padding: 5px 8px;
+                display: inline-block;
+            }
+
+            .lang-switcher .active-lang {
+                color: var(--accent-solid) !important;
+                font-weight: 700 !important;
+            }
+
+            .lang-switcher span {
+                color: var(--text-muted) !important;
             }
         }
 
@@ -356,450 +424,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-        }
-
-        .card {
-            position: relative;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            cursor: pointer;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-img-container {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-
-        .service-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .card:hover .service-img {
-            transform: scale(1.05);
-        }
-
-        .card-content-inner {
-            padding: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border-color: rgba(139, 38, 62, 0.2);
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            color: var(--text-main);
-        }
-
-        .card > .card-content-inner > p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .card-long-text {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease-in, margin-top 0.3s ease;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            border-top: 1px solid var(--border-light);
-            margin-top: 0;
-        }
-
-        .card.active {
-            border-color: rgba(139, 38, 62, 0.3);
-        }
-
-        .card.active .card-long-text {
-    max-height: none !important;
-    height: auto !important;
-    overflow: visible !important;
-    opacity: 1;
-    margin-top: 15px;
-    padding-top: 15px;
-}
-        /* Bewertungen */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .review-card-custom {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-        }
-
-        .testimonial-stars {
-            color: #f59e0b;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-        }
-
-        .review-card-custom h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        .review-card-custom p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-style: italic;
-        }
-
-        /* Kontaktformular */
-        .contact {
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 550px;
-            margin: 30px auto 0 auto;
-            position: relative;
-        }
-
-        form input, form textarea {
-            padding: 14px;
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            background: #ffffff;
-        }
-
-        form input:focus, form textarea:focus {
-            outline: none;
-            border-color: var(--accent-solid);
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-solid) !important;
-            color: #ffffff !important;
-            padding: 12px 26px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--text-main) !important;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #f4f4f4;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-light);
-        }
-
-        /* Mobile Menü & Responsives Layout */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 0;
-        }
-
-        .menu-toggle span {
-            width: 100%;
-            height: 3px;
-            background-color: var(--text-main);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 15px 5%;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: #ffffff;
-                border-bottom: 1px solid var(--border-light);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-in-out;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-            }
-
-            nav.active {
-                max-height: 320px; 
-            }
-
-            nav ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                padding: 10px 0;
-            }
-
-            nav ul li {
-                width: 100%;
-                text-align: center;
-            }
-
-            nav a {
-                display: block;
-                padding: 12px 0;
-                font-size: 1.05rem;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-
-            .hero-content {
-                padding: 30px 5%;
-                text-align: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2.1rem;
-            }
-
-            .hero-content .btn {
-                align-self: center;
-            }
-
-            .hero-carousel {
-                width: 100%;
-                height: 240px;
-                -webkit-mask-image: none;
-                mask-image: none;
-            }
-
-            .about, .services, .reviews, .faq, .contact {
-                padding: 40px 5%;
-            }
-
-            .about-layout {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .team-photo {
-                margin-top: 0;
-            }
-
-            .team-text-area .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profiles-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 25px;
-            right: 25px;
-            background-color: rgba(37, 211, 102, 0.75);
-            color: #ffffff;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
-            opacity: 0.8;
-        }
-
-        .whatsapp-float:hover {
-            background-color: #25d366;
-            opacity: 1;
-            transform: scale(1.08);
-        }
-
-        /* Formular Feedback */
-        .form-success {
-            background-color: #e6f4ea;
-            color: #137333;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ceead6;
-            font-size: 0.95rem;
-            text-align: center;
-        }
-
-        /* Google Maps */
-        .map-container {
-            max-width: 550px;
-            margin: 40px auto 20px auto;
-            text-align: left;
-        }
-
-        .map-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 12px;
-        }
-
-        .map-frame {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-        }
-
-        .map-frame iframe {
-            display: block;
-            width: 100%;
-            height: 280px;
-        }
-
-        /* FAQ Sektion */
-        .faq {
-            max-width: 900px;
-        }
-
-        .faq-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .faq-item {
-            background: #ffffff;
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: box-shadow 0.2s ease;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-        }
-
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 20px 25px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-main);
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: inherit;
-        }
-
-        .faq-icon {
-            font-size: 1.4rem;
-            color: var(--accent-solid);
-            font-weight: 400;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease;
-            padding: 0 25px;
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .faq-answer p {
-            padding-bottom: 20px;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-
-        /* ===== Gewünschte UI-Anpassungen ===== */
-        .lang-icon { display: none !important; }
-
-        /* Service-Text darf vollständig angezeigt werden.
-           Die tatsächliche Höhe wird per JavaScript anhand von scrollHeight gesetzt. */
-        .card-long-text {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease-in, margin-top 0.3s ease;
-        }
-
-        .card.active .card-long-text {
-            opacity: 1;
-            overflow: visible;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
-
-        /* Header erst beim Scrollen transparent / Glas-Effekt */
-        header {
-            transition: background-color 0.25s ease, backdrop-filter 0.25s ease,
-                        -webkit-backdrop-filter 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.4) !important;
-            -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
-            backdrop-filter: blur(18px) saturate(180%) !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07) !important;
         }
     </style>
 </head>
