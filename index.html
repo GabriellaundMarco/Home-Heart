@@ -129,47 +129,46 @@
 @media (max-width: 768px) {
     header {
         padding: 15px 5%;
+        position: relative; /* Verhindert Darstellungsfehler der Ebene */
     }
 
     .menu-toggle {
         display: flex;
     }
 
-    /* Menü als Overlay über den verbleibenden Bildschirm */
     nav {
+        display: none; /* Blockiert Rendering in Firefox im geschlossenen Zustand komplett */
         position: fixed;
         top: 80px; /* Höhe deines Headers */
         left: 0;
-        right: 0;
-        bottom: 0; /* Spann den Bereich exakt bis zum unteren Displayrand auf */
-        background: #ffffff;
+        width: 100vw;
+        height: calc(100vh - 80px);
+        height: calc(100dvh - 80px);
+        background-color: #ffffff;
         border-bottom: 1px solid var(--border-light);
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        z-index: 9999; /* Garantiert, dass es ÜBER dem Seiteninhalt liegt */
         
-        /* Unsichtbar im Standardzustand */
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        
-        /* Wichtig für Firefox Android & Safari: Eigenes Scroll-Verhalten */
-        overflow-y: auto;
+        /* Touch & Scroll-Handling für Mobil-Firefox */
+        overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
-        padding-bottom: 80px; /* Großzügiger Puffer, damit der Sprachumschalter nie verdeckt wird */
+        overscroll-behavior: contain;
     }
 
     nav.active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 60px;
     }
 
     nav ul {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
         gap: 0;
-        padding: 10px 0;
+        padding: 20px 0 10px 0;
     }
 
     nav ul li {
@@ -179,18 +178,15 @@
 
     nav a {
         display: block;
-        padding: 12px 0;
-        font-size: 1.05rem;
+        padding: 14px 0;
+        font-size: 1.1rem;
     }
 
     .lang-switcher {
         border-left: none;
         border-top: 1px solid var(--border-light);
-        margin-left: 0;
-        padding-left: 0;
-        padding-top: 15px;
-        margin-top: 10px;
-        margin-bottom: 20px;
+        margin: 15px 0 30px 0;
+        padding-top: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
