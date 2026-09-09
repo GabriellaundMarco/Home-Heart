@@ -126,24 +126,65 @@
             font-weight: 600;
         }
 
-        @media (max-width: 768px) {
-            .lang-switcher {
-                border-left: none;
-                border-top: 1px solid var(--border-light);
-                margin-left: 0;
-                padding-left: 0;
-                padding-top: 15px;
-                margin-top: 10px;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
+      @media (max-width: 768px) {
+    .lang-switcher {
+        border-left: none;
+        border-top: 1px solid var(--border-light);
+        margin-left: 0;
+        padding-left: 0;
+        padding-top: 15px;
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 
-            nav.active {
-                max-height: 320px; 
-            }
-        }
+    header {
+        padding: 15px 5%;
+    }
 
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid var(--border-light);
+        max-height: 0;
+        overflow-y: auto; /* Erlaubt vertikales Scrollen, falls der Bildschirm sehr klein ist */
+        transition: max-height 0.4s ease-in-out;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    nav.active {
+        /* Berechnet max-height anhand der mobilen Bildschirmschirmhöhe abzüglich des Headers */
+        max-height: calc(100vh - 80px); 
+        padding-bottom: 20px; /* Zusätzlicher Puffer unten für sauberes Aussehen */
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        padding: 12px 0;
+        font-size: 1.05rem;
+    }
+}
         /* HERO SECTION */
         .hero {
             position: relative;
